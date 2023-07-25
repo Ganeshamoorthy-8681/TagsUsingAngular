@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#container {
+    width: 50%;
+    height: auto;
+    max-height: 700px;
+    margin: 80px auto;
+}
+
+.container__keyValuePair__row {
+    display: flex;
+    height: 50px;
+    gap: 50px;
+    
+    background-color: #e3ccf6;
+}
+
+.container__keyValuePair__row:nth-child(even) {
+    background-color: #afd1f4;
+}
+
+.container__key,
+.container__value {
+    font-size: large;
+    padding: 20px;
+    width: 45%;
+}

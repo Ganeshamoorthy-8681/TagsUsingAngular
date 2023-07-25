@@ -1,0 +1,20 @@
+<!-- <div class="result-container">
+    <p>{{formData | json}}</p>
+    <ul *ngFor="let keyPair of formData['keyValueArr']">
+        <li>{{keyPair.key}}</li>
+    </ul>
+</div> -->
+
+    <main>
+        <ul id="container" >
+            <li class="container__keyValuePair__row" >
+                <span class="container__key"> <b> KEY</b></span>
+                <span class="container__value"><b>VALUE</b></span>
+            </li>
+            <li *ngFor="let keyValuePair of formData['keyValueArr']" class="container__keyValuePair__row">
+                <span class="container__key"> <b> {{keyValuePair.key}}</b> </span>
+                <span class="container__value"><b>{{keyValuePair.value}}</b> </span>
+            </li>
+
+        </ul>
+    </main>
