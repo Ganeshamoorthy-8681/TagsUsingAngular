@@ -8,8 +8,9 @@
             <div *ngFor="let item of keyValueArray.controls; let i = index" formGroupName= "{{i}}">
                 
                 <div class="form-group">
+                    
                     <div>
-                        <input type="text" placeholder="key" formControlName="key" (change)="onInputChange($event,i)">
+                        <input type="text" placeholder="key" formControlName="key" (input)="onInputChange($event,i)">
                         <!-- <ng-container *ngIf="$any(this.keyValueArray.controls[i]).controls['key'].errors">
                             <custom-error></custom-error>
                         </ng-container> -->
@@ -23,11 +24,14 @@
                         <p class="error-msg" *ngIf="$any(this.keyValueArray.controls[i]).controls['key'].errors?.['minlength']">Key must be greater than Three Characters </p>
                     </div>
 
+
                     <div>
                         <input type="text" placeholder="value" formControlName="value"> 
                         <button type="button" title="remove button" (click)="removeKeyValuePair(i)" class="btn remove-btn">Remove</button>
+                        <p class="error-msg" *ngIf="$any(this.keyValueArray.controls[i]).controls['value'].errors?.['required'] && $any(this.keyValueArray.controls[i]).controls['value'].touched">Value Cannot be Empty</p>
                     </div>
                 </div>
+
             </div>
             <button title="add a row" type="button" (click)="addKeyValuePair()" class="btn add-btn">add+</button>
         </div>

@@ -5,13 +5,14 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { ValidationsService } from "../validations.service";
-import { Router } from "@angular/router";
+import { ValidationsService } from "../services/validations.service";
+import { RouterService } from "../services/router.service";
+import { LocalstorageService } from "../services/localstorage.service";
 @Component({
   selector: "app-forms",
   templateUrl: "./forms.component.html",
   styleUrls: ["./forms.component.css"],
-  providers:[ValidationsService] 
+  providers: [ValidationsService]
 })
 export class FormsComponent implements OnInit {
 
@@ -20,7 +21,7 @@ export class FormsComponent implements OnInit {
   isFormValid!: boolean;
 
   //dependency injecting (calling validation logic as service here)
-  constructor(private Validations: ValidationsService, private router: Router) { }
+  constructor(private Validations: ValidationsService, private route: RouterService , private localStorage:LocalstorageService ) { }
 
   //getter used in template to get the form array
   get keyValueArray() {
@@ -30,10 +31,12 @@ export class FormsComponent implements OnInit {
   //method is called on change event
   onInputChange(event: Event, currentIndex: number) {
 
-    if (!(this.keyValueArray.controls[currentIndex] as FormGroup).controls['key'].errors?.['minlength'] ||
-      (this.keyValueArray.controls[currentIndex] as FormGroup).controls['key'].errors?.['pattern'] ) {
-
-      this.Validations.validate(
+    if (!( (this.keyValueArray.controls[currentIndex] as FormGroup).controls['key'].errors?.['minlength'] ||
+           (this.keyValueArray.controls[currentIndex] as FormGroup).controls['key'].errors?.['pattern'] || 
+           (this.keyValueArray.controls[currentIndex] as FormGroup).controls["key"].errors?.['required'])
+       )
+    {
+     this.Validations.validate(
         this.formElement,
         event,
         currentIndex,
@@ -43,7 +46,7 @@ export class FormsComponent implements OnInit {
 
     //update the status of form 
     this.isFormValid = this.formElement.valid;
-    console.log(this.isFormValid , this.formElement)
+    // console.log(this.isFormValid, this.formElement)
   }
 
   // formelement is initialized
@@ -56,8 +59,8 @@ export class FormsComponent implements OnInit {
   // method creates the new form group
   createKeyValuePair(): FormGroup {
     return new FormGroup({
-      key: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.pattern("[A-Za-z0-9]+") ]),
-      value: new FormControl(),
+      key: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.pattern("[A-Za-z0-9]+")]),
+      value: new FormControl(null,[Validators.required]),
     });
   }
 
@@ -82,9 +85,9 @@ export class FormsComponent implements OnInit {
   //method  called when submitted
   onSubmit() {
     console.log(this.formElement.value);
-    this.Validations.setData(this.formElement.value);
+    this.localStorage.setData(this.formElement.value);
     this.formElement.reset();
-    this.router.navigate(['submitted-data']);
+    this.route.navigateToPath("submitted-data");
   }
 }
 

@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './layout/header/header.component';
 import { FormsComponent } from './forms/forms.component';
 import { SubmittedDataComponent } from './submitted-data/submitted-data.component';
 import { RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 import { TagComponent } from './tag/tag.component';
 import { InputComponent } from './input/input.component';
 
