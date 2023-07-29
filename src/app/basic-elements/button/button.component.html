@@ -1,0 +1,8 @@
+
+<button [type]="buttonType"
+        [disabled]="!isValid" 
+        mat-flat-button 
+        color="primary"  
+        [color]="buttonColor"
+        (click)="clickEventEmit($event)">{{buttonMode}}
+</button>

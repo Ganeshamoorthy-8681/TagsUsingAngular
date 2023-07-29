@@ -1,0 +1,17 @@
+.container__keyValuePair__row {
+    display: flex;
+    height: 50px;
+    gap: 50px;
+    background-color: #e3ccf6;
+}
+
+.container__keyValuePair__row:nth-child(even) {
+    background-color: #afd1f4;
+}
+
+.container__key,
+.container__value {
+    font-size: large;
+    padding: 20px;
+    width: 45%;
+}

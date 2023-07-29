@@ -1,0 +1,18 @@
+<form [formGroup]="formElement" (ngSubmit)="onsubmit()">
+        <app-form-array [array]="keyvalueArray" class="form-array"></app-form-array>
+        <app-button  buttonType ="submit" buttonMode="submit" [isValid]="this.formElement.valid"></app-button>
+</form>
+
+
+<div class="display-key-pair" *ngIf="localStoredData">
+        <app-tagview></app-tagview>
+</div>
+
+
+<!-- 
+    using material ,
+    make a component tag which should have a formgroup 
+    make a separate service for all (router, localstorage)
+    structure of form should be in tag that is validation 
+ -->
+ 

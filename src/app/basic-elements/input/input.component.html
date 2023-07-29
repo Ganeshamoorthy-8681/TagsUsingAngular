@@ -1,0 +1,7 @@
+
+<mat-form-field>
+    <mat-label>{{label}}</mat-label>
+    <input type="text" matInput (input)="inputEventEmit($event)"
+    [formControl]="control"> 
+    <mat-error>{{customError}}</mat-error>
+</mat-form-field>

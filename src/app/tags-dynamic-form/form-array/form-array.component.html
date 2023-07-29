@@ -1,0 +1,7 @@
+
+<div *ngFor="let group of arrayControls; let currentIndex = index">
+        <app-tag [controls]="group.controls" (inputChangeEventForKeyField)="onInputChange($event,currentIndex)"></app-tag>
+        <app-button buttonMode="Remove" (clickEvent)="removeKeyValuePair($event, currentIndex)"></app-button>
+</div>
+
+<app-button (clickEvent)="addFormGroup()" buttonMode="Add+"> Add+ </app-button>

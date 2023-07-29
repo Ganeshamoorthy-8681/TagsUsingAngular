@@ -1,0 +1,7 @@
+
+
+        <app-input label="key" [control]="controls.key" (inputEvent)="onInputChange($event)"
+            [customError]="customErrorMessage" class="form-input"></app-input>
+        <app-input label="value" [control]="controls.value" [customError]="this.errorMessages.required" class="form-input"></app-input>
+   
+   
